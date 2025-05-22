@@ -18,16 +18,76 @@ public class HomeController : Controller
          
         return View();
     }
-    public IActionResult Juego()
+    public IActionResult Jugar()
         {
-            /*La palabra parcialmente descubierta (con guiones bajos en las letras aún no acertadas).
-            Las letras ya utilizadas.*/ 
-            int intentos=0;
-            intentos=palabra.intentos.Count;
-            foreach(char letra in palabra.intentos)
-            Console.WriteLine(letra);
-             return View("Juego");
+           
+        
+        palabra.nuevaPartida();
+            
+    
+        ViewBag.PalabraOculta = palabra.encontrarPalabraOculta();
+        ViewBag.LetrasUsadas = palabra.intentos;
+        ViewBag.Gano = palabra.gano;
+        ViewBag.Finalizo = palabra.finalizo;
+        ViewBag.PalabraOriginal = palabra.palabraSecreta;
+        
+
+    
+       
+             return View("Jugar");
         }
-   
+    public IActionResult arriesgarPalabra(string palabraIngresada)
+    {
+        ViewBag.PalabraOculta = palabra.encontrarPalabraOculta();
+
+      
+
+        bool gano = palabra.ArriesgarPalabra(palabraIngresada);
+        if (gano == true )
+        {
+            ViewBag.Gano = palabra.gano;
+            ViewBag.LetrasUsadas = palabra.intentos;
+            ViewBag.cantIntentos = palabra.intentos.Count;
+            ViewBag.PalabraOriginal = palabra.palabraSecreta;
+
+        }
+        else
+        {
+            ViewBag.Gano = palabra.gano;
+            ViewBag.LetrasUsadas = palabra.intentos;
+            ViewBag.cantIntentos = palabra.intentos.Count;
+            ViewBag.PalabraOriginal = palabra.palabraSecreta;
+        }
+
+        return View("Final");
+
+    }
+       public IActionResult arriesgarLetra(char letra)
+    {
+        ViewBag.PalabraOculta = palabra.encontrarPalabraOculta();
+
+      
+
+         palabra.inicializarLetra(letra);
+         bool resultado = palabra.encontrarPalabraOculta();
+         
+
+        if (resultado == true )
+        {
+            ViewBag.Gano = palabra.gano;
+            ViewBag.LetrasUsadas = palabra.intentos;
+            ViewBag.cantIntentos = palabra.intentos.Count;
+            ViewBag.PalabraOriginal = palabra.palabraSecreta;
+
+        }
+        else
+        {
+          palabra.inicializarLetra(letra);
+        }
+
+        return View("Final");
+
+    }
+
 }
 

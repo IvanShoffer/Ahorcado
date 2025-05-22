@@ -18,7 +18,7 @@ public static class palabra
 
 
     }
-    public static string encontrarPalabraOculta ()
+    public static bool encontrarPalabraOculta ()
     {
         string resultado = "";
     for (int i = 0; i < palabraSecreta.Count(); i++)
@@ -34,7 +34,8 @@ public static class palabra
                 resultado += "_";
             }          
     }
-    return resultado;
+     bool gano = ArriesgarPalabra(resultado);
+     return gano;
     }
 
     public static void inicializarLetra(char letra)
