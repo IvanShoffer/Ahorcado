@@ -1,0 +1,10 @@
+@{
+    ViewData["Title"] = "Termino, Gracias por participar";
+}
+@if (ViewBag.Gano==true)
+{<h2>FELICITACIONES GANASTE!!</h2>}
+else { <h2>LAMENTABLEMENTE PERDISTE PERO TE DAMOS LA OPORTUNIDAD DE JUGAR DE VUELTA</h2> }
+@for (int i = 0; i < ViewBag.LetrasUsadas.Count; i++)
+{<h3> @ViewBag.LetrasUsadas[i]</h3>}
+<p>Intentos: @ViewBag.LetrasUsadas.Count</p>
+<p> @ViewBag.PalabraOriginal</p>
