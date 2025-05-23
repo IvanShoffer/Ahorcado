@@ -18,7 +18,7 @@ public static class palabra
 
 
     }
-    public static bool encontrarPalabraOculta ()
+    public static string encontrarPalabraOculta ()
     {
         string resultado = "";
     for (int i = 0; i < palabraSecreta.Count(); i++)
@@ -35,7 +35,7 @@ public static class palabra
             }          
     }
      bool gano = ArriesgarPalabra(resultado);
-     return gano;
+     return resultado;
     }
 
     public static void inicializarLetra(char letra)
@@ -45,7 +45,7 @@ public static class palabra
         if(intentos.Contains(letra)==false)
         {
           intentos.Add(letra);
-          verificarGanador();
+          
         }
         
     }
@@ -65,23 +65,6 @@ public static class palabra
     finalizo = true; 
     return gano;
 }
-    public static bool verificarGanador()
-
-    {
-        
-      string palabraFinal = encontrarPalabraOculta();
-      
-    if (palabraFinal == palabraSecreta)
-    {
-        gano = true;
-    }
-    else
-    {
-        gano = false;
-    }
-
-    finalizo = true; 
-    return gano;
-}
+  
     }
     

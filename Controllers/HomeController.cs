@@ -64,28 +64,24 @@ public class HomeController : Controller
     }
        public IActionResult arriesgarLetra(char letra)
     {
-        ViewBag.PalabraOculta = palabra.encontrarPalabraOculta();
+       
 
       
+              palabra.inicializarLetra(letra);
+            string oculto = palabra.encontrarPalabraOculta();
 
-         palabra.inicializarLetra(letra);
-         bool resultado = palabra.encontrarPalabraOculta();
-         
+            ViewBag.PalabraOculta= oculto;
+            ViewBag.LetrasUsadas= palabra.intentos;
+            ViewBag.CantIntentos= palabra.intentos.Count;
+            ViewBag.Gano= palabra.gano;
+            ViewBag.Finalizo= palabra.finalizo;
+            ViewBag.PalabraOriginal= palabra.palabraSecreta;
 
-        if (resultado == true )
-        {
-            ViewBag.Gano = palabra.gano;
-            ViewBag.LetrasUsadas = palabra.intentos;
-            ViewBag.cantIntentos = palabra.intentos.Count;
-            ViewBag.PalabraOriginal = palabra.palabraSecreta;
-
-        }
-        else
-        {
-          palabra.inicializarLetra(letra);
-        }
-
-        return View("Final");
+     
+            if (palabra.finalizo == true)
+                return View("Final");
+            else
+                return View("Jugar");
 
     }
 
