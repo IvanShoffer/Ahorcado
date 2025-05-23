@@ -31,10 +31,10 @@ public static class palabra
             }
             else
             {
-                resultado += "_";
+                resultado += " _";
             }          
     }
-     bool gano = ArriesgarPalabra(resultado);
+   
      return resultado;
     }
 
@@ -56,13 +56,32 @@ public static class palabra
     if (palabraIngresada == palabraSecreta)
     {
         gano = true;
+
     }
     else
     {
         gano = false;
     }
 
-    finalizo = true; 
+finalizo = true;
+    return gano;
+}
+    public static bool VerificarGanador(string palabraIngresada)
+{
+    palabraIngresada = palabraIngresada.ToUpper();
+
+    if (palabraIngresada == palabraSecreta)
+    {
+        gano = true;
+        finalizo = true;
+        
+    }
+    else
+    {
+        gano = false;
+    }
+
+
     return gano;
 }
   

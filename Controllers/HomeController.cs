@@ -69,6 +69,7 @@ public class HomeController : Controller
       
               palabra.inicializarLetra(letra);
             string oculto = palabra.encontrarPalabraOculta();
+            bool gano = palabra.VerificarGanador(oculto);
 
             ViewBag.PalabraOculta= oculto;
             ViewBag.LetrasUsadas= palabra.intentos;
@@ -79,9 +80,9 @@ public class HomeController : Controller
 
      
             if (palabra.finalizo == true)
-                return View("Final");
+                return View("final");
             else
-                return View("Jugar");
+                return View("jugar");
 
     }
 
