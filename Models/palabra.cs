@@ -1,9 +1,15 @@
+using Newtonsoft.Json;
 public static class palabra
 {
+    [JsonProperty]
     private static  List<string> palabraJugable = new List<string> {"AHORCADO", "PROGRAMACION", "TECNOLOGIA", "PROFESORA", "ARTE"};
+        [JsonProperty]
     public static List<char> intentos{get; private set;} 
+        [JsonProperty]
     public static bool gano{get; private set;}
+        [JsonProperty]
     public static bool finalizo{get; private set;}
+        [JsonProperty]
       public static string palabraSecreta;
  
     public static void nuevaPartida()

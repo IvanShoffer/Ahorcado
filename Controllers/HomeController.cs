@@ -23,9 +23,8 @@ public class HomeController : Controller
            
         
         palabra.nuevaPartida();
-            
-    
         ViewBag.PalabraOculta = palabra.encontrarPalabraOculta();
+        
         ViewBag.LetrasUsadas = palabra.intentos;
         ViewBag.Gano = palabra.gano;
         ViewBag.Finalizo = palabra.finalizo;
